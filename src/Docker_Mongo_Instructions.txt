@@ -1,0 +1,31 @@
+1.	Right Click on Solution and "Open in Terminal"
+2.	check whether the docker is on: docker ps
+3.	pull the mongo from hub.docker.com: docker pull mongo
+4.	run mongo in the docker: docker run -d -p 27017:27017 --name shopping-mongo mongo
+	here -d is detached mode, 
+	-p is providing port number, 
+	27017:27017 (mongo uses this port) forwarding port to local comp. first is local second is in docker,
+	-name is the name of container, and mongo is image name
+5.	check if it is running: docker ps
+6.	for troubleshooting you can check container logs: docker logs -f shopping-mongo
+7.	we can go inside to the container by opening interactive terminal for the container: docker exec -it shopping-mongo /bin/bash
+----------------------------------------------------------------
+8.	inside of the container we can create mongo documents, collections, etc. via interactive terminal. 
+	So to write commands: mongo
+9.	To show databases: show dbs
+	we should see the default databases: admin, config, local
+10. In order to create a new database: use CatalogDB
+	it will create a new database with name CatalogDB
+11. To create a new collection: db.createCollection('Products')
+	collections are alternatives of Tables in SQL databases
+12. To add documents (items) in the collection: db.Products.insert(...) or  db.Products.insertMany(...)
+	db.Products.insertMany([{ 'Name':'Asus Laptop','Category':'Computers', 'Summary':'Summary', 'Description':'Description', 'ImageFile':'ImageFile', 'Price':54.93 }, { 'Name':'HP Laptop','Category':'Computers', 'Summary':'Summary', 'Description':'Description', 'ImageFile':'ImageFile', 'Price':88.93 } ])
+13. then we can check it: db.Products.find({}).pretty()
+	here find({}) means find with no filters,
+	pretty() is for beatiful style of json
+14.	if we want to remove the items in the collection: db.Products.remove({})
+15. show databases
+16.	show collections
+	will show the Products collection
+---------------------------------------------------------------
+	

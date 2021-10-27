@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{11FDCA73-462F-4544-BF69-CDFFE890BCE5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{E78437E2-A20A-4476-8CA7-24DA92108038}"
+	ProjectSection(SolutionItems) = preProject
+		Docker_Mongo_Instructions.txt = Docker_Mongo_Instructions.txt
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API", "Services\Catalog\Catalog.API\Catalog.API.csproj", "{2FBEAD27-D6C9-4C5E-A747-0346D79BD7CF}"
 EndProject
