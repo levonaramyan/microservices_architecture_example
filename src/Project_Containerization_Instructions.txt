@@ -1,0 +1,62 @@
+We need to create docker compose with docker file
+1.	Right click on Catalog.API project -> Add -> Container Orchestrator Support
+2.	Select Docker Compose
+3.	Select Linux OS
+4.	The Dockerfile is created in the Catalog.API project and docker-Compose is added in the solution
+5.	Dockerfile contains two main parts
+	.	Building the Application
+		1.	FROM: is the base image of the project library used: here we use .NET 5 SDK project
+		2.	WORKDIR: is working directory. Where the application files will be stored.
+		3.	COPY: copying files in a specified locations
+		4.	RUN dotnet build: building the project
+	.	Publishing the Application
+		1.	RUN dotnet publish: publishing the application
+		2.	ENTRYPOINT ["dotnet", "Catalog.API.dll"]: shows that when the container will be runned, it will call "dotnet" and "Catalog.API.dll" and run our program
+6.	in docker-compose there is docker-compose.yml file
+	here "image" specifies the image of our Service (Catalog.API), and "dockerfile" specifies the location of the dockerfile to be used
+7.	docker-compose.override.yml specified some extra parameters, such as environment variables and ports
+8.	docker-compose specifies all the microservices that will be running by docker
+-----------------------------------------------------------
+We should add also mongo Database in our docker-compose.yml file
+1.	We need to extend the docker-compose.yml file with mongoDB
+2.	Add catalogdb service with image: mongo
+3.	Add volume for mongo_data
+	volumes are persistant data storages outside of container
+	So if the image will be deleted or recreated, the data will remain in the volume
+4.	update is necessary also in docker-compose.override.yml
+	.	add under the services catalogdb and specify below parameters
+		1.	container_name: catalogdb
+		2.	restart: always (it will restart untill success)
+		3.	ports:
+			  - "27017:27017"
+		4.	volumes:
+			  - mongo_data:/data/db
+5.	Add also some configuration also for Catalog.API in docker-compose.override.yml
+	.	add under the catalog.api
+		1.	container_name: catalog.api
+		2.	add one more evironment variable for connection string to override on appsettings, since in the docker environment the connection string will be modified
+			environment:
+			  - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017" (in docker environment there is no localhost, but the names of the containers, e.g. catalogdb)
+		3.	depends_on:
+			  - catalogdb (because if the catalogdb is not working the catalog.api is useles)
+			depends_on just ensures that first the catalogdb is started then starts the catalog.api
+		4.	we need to forward the docker port 80 into local environment 8000 port so change the ports
+			ports:
+			  - "8000:80"
+--------------------------------------------------------------
+Running the application
+1.	Right click on docker-compose and Open in Terminal
+2.	to see what is in the directory: ls
+3.	docker ps -> will show the running mongo that we have created previously
+4.  stop that mongo container, in order to not have conflicts on exposing the same 27017 port
+	docker stop b07d
+5.	docker ps, to ensure that it is stopped
+6.	remove the b07d
+	docker rm b07d
+7.	remove also the image
+	docker rmi b07d
+We will run docker compose file
+8.	docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up - d
+	here -f means file
+	-d means working with detached mode
+			
