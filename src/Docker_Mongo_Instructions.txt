@@ -28,4 +28,12 @@
 16.	show collections
 	will show the Products collection
 ---------------------------------------------------------------
+Running and testing API
+1.	Check if docker desktop is running
+2.	Right click on solution and select "Open in Terminal"
+3.	Check if mongo container is running: docker ps
+	this shows all the running containers
+4.	if mongo is not running, then chek the existing images: docker images
+5.	run the existing image with specifying the container ID prefix: docker start b07d
+
 	
