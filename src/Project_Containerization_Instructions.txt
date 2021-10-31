@@ -59,4 +59,16 @@ We will run docker compose file
 8.	docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up - d
 	here -f means file
 	-d means working with detached mode
+----------------------------------------------------------------
+When using Docker Compose, if building a project it will create docker image,
+and if cleaning the project then the images will be deleted
+----- Debugging with docker ------
+1.	However these operation are time consuming and may slow down the development
+	For that purpose Tools -> Options -> Docker Compose -> 
+	.	Pull required .... -> False
+	.	Pull updated .... -> Never
+	.	Remove containers ... -> True
+	.	Run containers on project open -> False
+2.	In order to stop all of the containers in docker compose
+	docker-compose -f docker.compose.yml -f docker-compose.override.yml down
 			
