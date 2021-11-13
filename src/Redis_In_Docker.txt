@@ -1,0 +1,16 @@
+Adding redis into docker compose
+1. Right click on docker-compose -> Open In terminal
+2. docker pull redis
+3. Run the image
+	docker run -d -p 6379:6379 --name microserviceExample-redis redis
+4. to see the logs in redis container
+	docker logs -f microserviceExample-redis
+5. to be able to type redis commands in interactive terminal
+	docker exec -it microserviceExample-redis /bin/bash
+6. at first we need to enter into redis-cli
+	redis-cli
+7. now we can interact with redis
+	ping -> pong
+	set key value
+	get key
+8.

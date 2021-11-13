@@ -16,8 +16,11 @@ EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{AD299C98-C0AE-41A0-9AF0-BC564B991C00}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{18EDBB5B-F066-4D58-9A59-D49539CA414E}"
+	ProjectSection(SolutionItems) = preProject
+		Redis_In_Docker.txt = Redis_In_Docker.txt
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{12F5FEC5-E474-41CF-A0B2-785AAEBD3F42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{12F5FEC5-E474-41CF-A0B2-785AAEBD3F42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
