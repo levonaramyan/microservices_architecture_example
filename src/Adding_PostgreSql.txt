@@ -1,0 +1,56 @@
+1.	In docker-compose.yml adding the image of PostgreSQL
+	discountdb:
+      image: postgres
+2.  Add a volume for PostgreSQL in docker-compose.yml file
+    volumes:
+      ...
+      postgres_data:
+3.	Add also corresponding configurations in docker-compose.override.yml file:
+	discountdb:
+      container_name: discountdb
+      environment:
+        - POSTGRES_USER=admin
+        - POSTGRES_PASSWORD=admin123
+        - POSTGRES_DB=DiscountDb
+      restart: always
+      ports:
+        - "5432:5432"
+      volumes:
+        - postgres_data:/var/lib/postgresql/data/
+4.  Add pgAdmin for PostgreSQL administration tools
+5.  In the docker-compose.yml add:
+    pgadmin:
+      image: dpage/pgadmin4
+6.  Add new volume for pgadmin
+    volumes:
+      ...
+      pgadmin_data:
+7.  In docker-compose.override.yml add:
+    pgadmin:
+      container_name: pgadmin
+      environment:
+        - PGADMIN_DEFAULT_EMAIL=admin@microservicesexample.com
+        - PGADMIN_DEFAULT_PASSWORD=admin123
+      restart: always
+      ports:
+        - "5050:80"
+      volumes:
+        - pgadmin_data:/root/.pgadmin
+8.  Compose:
+    docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+9.  login to localhost:5050
+10. Click to Add new server
+    Name: DiscountServer
+    Connections ->
+        Host name: discountdb
+        Port: 5432
+        Username: admin
+        Password: admin123 (match these values with point 3 config)
+11. Create table in discountdb
+    Tools -> Query Tool
+        CREATE TABLE Coupon(
+        	ID SERIAL PRIMARY KEY NOT NULL,
+        	ProductName VARCHAR(24) NOT NULL,
+        	Description TEXT,
+        	Amount INT
+        );

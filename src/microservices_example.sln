@@ -23,6 +23,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{18EDBB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{12F5FEC5-E474-41CF-A0B2-785AAEBD3F42}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{677EB7F5-81B4-46C0-A291-8F3A1F75E612}"
+	ProjectSection(SolutionItems) = preProject
+		Adding_PostgreSql.txt = Adding_PostgreSql.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.API", "Services\Discount\Discount.API\Discount.API.csproj", "{5990E64A-DE91-47AC-8AD4-19DADFF0584F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +48,10 @@ Global
 		{12F5FEC5-E474-41CF-A0B2-785AAEBD3F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12F5FEC5-E474-41CF-A0B2-785AAEBD3F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12F5FEC5-E474-41CF-A0B2-785AAEBD3F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5990E64A-DE91-47AC-8AD4-19DADFF0584F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5990E64A-DE91-47AC-8AD4-19DADFF0584F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5990E64A-DE91-47AC-8AD4-19DADFF0584F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5990E64A-DE91-47AC-8AD4-19DADFF0584F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +61,8 @@ Global
 		{2FBEAD27-D6C9-4C5E-A747-0346D79BD7CF} = {E78437E2-A20A-4476-8CA7-24DA92108038}
 		{18EDBB5B-F066-4D58-9A59-D49539CA414E} = {11FDCA73-462F-4544-BF69-CDFFE890BCE5}
 		{12F5FEC5-E474-41CF-A0B2-785AAEBD3F42} = {18EDBB5B-F066-4D58-9A59-D49539CA414E}
+		{677EB7F5-81B4-46C0-A291-8F3A1F75E612} = {11FDCA73-462F-4544-BF69-CDFFE890BCE5}
+		{5990E64A-DE91-47AC-8AD4-19DADFF0584F} = {677EB7F5-81B4-46C0-A291-8F3A1F75E612}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FCBFDB2C-16F1-4599-981D-D771AB41B22B}
