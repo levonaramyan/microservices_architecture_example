@@ -1,0 +1,38 @@
+1.	Add docker orchestration support
+	Right Click on Basket.API -> Add -> Docker Orchestration Support -> Docker-Compose -> Linux
+2.	Add Redis image configurations in docker-compose.yml
+	basketdb:
+      image: redis:alpine (alpine is light version of redis)
+3.	Add redis connection string in application environment
+	- "CacheSettings:ConnectionString=basketdb:6379"
+4.	Add basketdb in docker-compose.override.yml
+	basketdb:
+      container_name: basketdb
+      restart: always
+      ports:
+        - "6379:6379"
+5.  docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+------------------------------------------------------------------------------------------------
+------------------- Manage Containers with Portainer -------------------------------------------
+1.  Add portainer image in docker-compose.yml
+    portainer:
+      image: portainer/portainer-ce
+2.  In order to store user information we add also a volume for portainer
+    volumes:
+      mongo_data: (existing)
+      portainer_data: (new)
+3.  Add also the portainer in docker-compose.override.yml
+    portainer:
+      container_name: portainer
+      restart: always
+      ports:
+        - "8080:8000"
+        - "9000:9000"
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - portainer_data:/data
+4.  To test the portainer:
+    docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+5.  open http://localhost:9000/
+6.  create admin user
+7.  logout -> login and you will see the full dashboard with existing containers

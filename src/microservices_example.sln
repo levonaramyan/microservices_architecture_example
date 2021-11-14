@@ -17,6 +17,7 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{18EDBB5B-F066-4D58-9A59-D49539CA414E}"
 	ProjectSection(SolutionItems) = preProject
+		Containerize_Basket.API.txt = Containerize_Basket.API.txt
 		Redis_In_Docker.txt = Redis_In_Docker.txt
 	EndProjectSection
 EndProject
