@@ -12,6 +12,11 @@ namespace Basket.API.Entities
            
         }
 
+        public ShoppingCart(string userName)
+        {
+            UserName = userName;
+        }
+
         public ShoppingCart(string userName, List<ShoppingCartItem> items)
         {
             UserName = userName;
